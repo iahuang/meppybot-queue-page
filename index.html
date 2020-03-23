@@ -23,6 +23,9 @@
             button:hover {
                 background-color: #313131;
             }
+            button:active {
+                background-color: #2b2a2a;
+            }
             textarea {
                 margin-top: 10px;
                 width: 50vw;
@@ -48,6 +51,11 @@
                 padding: 10px;
                 font-size: small;
                 color: grey;
+                display: flex;
+            }
+            .footer > img {
+                padding-left: 10px;
+                opacity: 50%;
             }
         </style>
     </head>
@@ -57,22 +65,28 @@
         </div>
         <div class="content">
             <h1>Query String:</h1>
-            <button onclick="copyQuery();">Copy to clipboard</button>
+            <button onclick="copyQuery();" id="button">
+                Copy to clipboard
+            </button>
             <br />
             <textarea id="ta"></textarea>
         </div>
         <div class="footer">
             meppy sucks at tetris
+            <img
+                src="https://discordemoji.com/assets/emoji/1557_omegalul.png"
+                draggable="false"
+                width="20pt"
+            />
         </div>
 
         <script>
             let el = document.getElementById("ta");
             const urlParams = new URLSearchParams(window.location.search);
-            console.log(urlParams);
-            let text = urlParams.get('queueString');
+            let text = urlParams.get("queueString");
             if (!text) {
                 text = "No queue string provided in URL query";
-                ta.style = "color: red;"
+                ta.style = "color: red;";
             }
             el.value = text;
             function copyQuery() {
@@ -80,6 +94,9 @@
                 document.execCommand("copy");
                 window.getSelection().removeAllRanges();
                 el.blur();
+                console.log("Copied string", text, "to clipboard");
+                document.getElementById("button").innerText = "Copied!";
+                document.getElementById("button").style = "color: #0ce3ac;";
             }
         </script>
     </body>
