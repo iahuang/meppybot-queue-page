@@ -7,6 +7,7 @@
                 background-color: #222222;
                 color: white;
                 margin: 0px;
+                overflow: hidden;
             }
             button {
                 background-color: #464545;
@@ -41,6 +42,13 @@
             .content {
                 margin: 20px;
             }
+            .footer {
+                bottom: 0;
+                position: absolute;
+                padding: 10px;
+                font-size: small;
+                color: grey;
+            }
         </style>
     </head>
     <body>
@@ -53,10 +61,20 @@
             <br />
             <textarea id="ta"></textarea>
         </div>
+        <div class="footer">
+            meppy sucks at tetris
+        </div>
 
         <script>
             let el = document.getElementById("ta");
-            el.value = "%text%";
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams);
+            let text = urlParams.get('queueString');
+            if (!text) {
+                text = "No queue string provided in URL query";
+                ta.style = "color: red;"
+            }
+            el.value = text;
             function copyQuery() {
                 el.select();
                 document.execCommand("copy");
