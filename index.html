@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Exo+2&display=swap");
+            body {
+                font-family: "Exo 2";
+                background-color: #222222;
+                color: white;
+                margin: 0px;
+            }
+            button {
+                background-color: #464545;
+                border: none;
+                outline: none;
+                padding: 10px;
+                font-size: 14pt;
+                cursor: pointer;
+                color: white;
+                font-family: "Exo 2";
+                border-radius: 5px;
+            }
+            button:hover {
+                background-color: #313131;
+            }
+            textarea {
+                margin-top: 10px;
+                width: 50vw;
+                height: 20vh;
+                font-size: 12pt;
+                outline: none;
+                padding: 10px;
+                border-radius: 5px;
+                color: #464545;
+            }
+            .header {
+                padding: 20px;
+                width: 100vw;
+                font-size: 16pt;
+                background-color: #375a7f;
+            }
+            .content {
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            meppyBTW_AM_BOT
+        </div>
+        <div class="content">
+            <h1>Query String:</h1>
+            <button onclick="copyQuery();">Copy to clipboard</button>
+            <br />
+            <textarea id="ta"></textarea>
+        </div>
+
+        <script>
+            let el = document.getElementById("ta");
+            el.value = "%text%";
+            function copyQuery() {
+                el.select();
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+                el.blur();
+            }
+        </script>
+    </body>
+</html>
